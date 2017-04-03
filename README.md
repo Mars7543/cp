@@ -14,6 +14,7 @@
 * Whenever you make a change please use git to save the current version so we can revert back if anything goes wrong
 
 # Inorder to run ungit use this cmd:
+* ungit (usually works | if not use the one below)
 * ungit --urlBase http://$IP --port $PORT
 * Make sure to ctr - c to close ungit whenever you are done
 
