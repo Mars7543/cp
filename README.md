@@ -5,8 +5,8 @@
 * Ungit is essentially a gui to make it easier to use git
 
 # To Learn More About Git In General
-* Make a udemy account if you don't already have one and use this coupon code to get a free copy of this git course:
-* https://www.udemy.com/intro-to-git/?couponCode=WDBCLASS
+* I will recommend a good udemy course that you can take
+
 
 # To Learn More About Ungit
 * https://www.youtube.com/watch?v=hkBVAi3oKvo
