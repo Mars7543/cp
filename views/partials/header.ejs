@@ -5,29 +5,39 @@
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css" />
-        <link rel="stylesheet" type="text/css" href="stylesheets/app.css">
+        <link rel="stylesheet" type="text/css" href="../../stylesheets/app.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.js" integrity="sha256-Z8zOlL7Qb7adkTfszqcKWybBdjBOZBY0r7DuFLZqMX8=" crossorigin="anonymous"></script>
     </head>
     
     <body>
         <div class="ui huge fixed menu" id="main-menu">
             <a class="header item" href="/">
-                <i class="code icon"></i>
-                    Charity Programmers<i class="empty heart icon">
+                <i class="empty heart icon"></i>
+                    Charity Programmers<i class="code icon">
                 </i>
             </a>
             <div class="right menu">
                 <!-- Displays different navbar depending on whether or not 
                     they are in the /charity or /programmer page -->
                 <% if (cp === "n") { %>
-                    <a href="/charity" class="item">Charity</a>
-                    <a href="/programmer" class="item">Programmer</a>
+                    <a href="/charity/job" class="item">Charity</a>
+                    <a href="/programmer/job" class="item">Programmer</a>
                 <% } else if (cp === "c") { %>
-                    <a href="/charity/view" class="active item">My Job</a>
-                    <a href="/charity/create" class="item">Create Job</a>
+                    <% if (r === "index") { %>
+                        <a href="/charity/job" class="active item">My Job</a>
+                        <a href="/charity/job/new" class="item">Create Job</a>
+                    <% } else if (r == "new") { %> 
+                        <a href="/charity/job" class="item">My Job</a>
+                        <a href="/charity/job/new" class="active item">Create Job</a>
+                    <% } %>
                 <% } else if (cp === "p") { %>
-                    <a href="/charity/view" class="active item">My Jobs</a>
-                    <a href="/charity/create" class="item">Available Jobs</a>
+                    <% if (r === "index") { %>
+                        <a href="/programmer/job" class="active item">My Jobs</a>
+                        <a href="/programmer/job/all" class="item">Available Jobs</a>
+                    <% } else if (r == "view") { %> 
+                        <a href="/programmer/job" class="item">My Jobs</a>
+                        <a href="/programmer/job/all" class="active item">Available Jobs</a>
+                    <% } %>
                 <% } %>
             </div>
 
@@ -39,5 +49,7 @@
                 </div> 
             -->
         </div>
+        
+        <div class="container">
         
         

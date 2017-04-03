@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<h1>Create New Job!</h1>
+
+<form action="/charity/job" method="post">
+    <input type="text" name="job[title]" placeholder="Title:" required>
+    <textarea name="job[description]" required></textarea>
+    <input type="text" name="job[charityName]" placeholder="Charity Name:" required>
+    <button>Create!</button>
+</form>
+
+<% include ../partials/footer %>
