@@ -11,11 +11,11 @@ app.get("/", function(req, res){
 });
 
 app.get("/charity", function(req, res){
-   res.render("charity", {cp: "c"}); 
+   res.render("charity/charity", {cp: "c"}); 
 });
 
 app.get("/programmer", function(req, res){
-   res.render("programmer", {cp: "p"}); 
+   res.render("programmer/programmer", {cp: "p"}); 
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
