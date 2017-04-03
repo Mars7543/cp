@@ -7,6 +7,10 @@
 # To Learn More About Git In General
 * I will recommend a good udemy course that you can take
 
+* If you don't want to take the course you can watch the following videos: 
+* https://www.youtube.com/watch?v=0fKg7e37bQE - Basic Git Commands
+* https://www.youtube.com/watch?v=oFYyTZwMyAg&t=216s - Branches / Pull Requests / Merging Etc.
+
 
 # To Learn More About Ungit
 * https://www.youtube.com/watch?v=hkBVAi3oKvo
