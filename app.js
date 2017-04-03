@@ -7,7 +7,7 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res){
-   res.render("home", {cp: "n"}); 
+    res.render("home", {cp: "n"}); 
 });
 
 app.get("/charity", function(req, res){
