@@ -3,7 +3,7 @@
 # Learn How To Properly Use Git / Ungit
 * In this application we will be using an extension called Ungit
 * Ungit is essentially a gui to make it easier to use git
-
+       
 # To Learn More About Git In General
 * I will recommend a good udemy course that you can take
 
