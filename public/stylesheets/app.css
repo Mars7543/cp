@@ -1,12 +1,33 @@
-#main-menu .icon{
+#main-menu .icon {
     font-size: 100%;
 }
 
 #main-menu .code.icon {
     font-size: 110%;
     margin-left: 5px;
-} 
+}
 
-.container{
-    margin-top: 75px;
+.half {
+    position: relative;
+    width: 50%;
+    top: 0;
+    left: 0;
+}
+
+.formContainer {
+    margin: 80px auto 0 auto;
+    width: 30%;
+}
+
+#field {
+    margin-top: 10px;
+}
+
+#myJob {
+    float: left;
+}
+
+#myInfo {
+    margin-top: 0;
+    float: right;
 }

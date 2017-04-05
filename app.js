@@ -59,7 +59,7 @@ app.get("/programmer/job/all", function(req, res){
         if (err) {
             console.log(err);
         } else {
-            res.render("programmer/all", {cp: "p", r: "index", jobs: allJobs}); 
+            res.render("programmer/all", {cp: "p", r: "view", jobs: allJobs}); 
         }
     });
 });
