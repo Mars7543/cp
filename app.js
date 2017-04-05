@@ -1,7 +1,4 @@
-var passportLocalMongoose = require("passport-local-mongoose"),
-    LocalStrategy         = require("passport-local"),
-    bodyParser            = require("body-parser"),
-    passport              = require("passport"),
+var bodyParser            = require("body-parser"),
     mongoose              = require("mongoose"),
     express               = require("express"),
     app                   = express();
@@ -21,8 +18,6 @@ var userSchema = new mongoose.Schema({
     username: String,
     password: String
 });
-
-userSchema.plugin(passportLocalMongoose);
 
 var User = mongoose.model("User", userSchema);
 
