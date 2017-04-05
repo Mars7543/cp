@@ -1,39 +1,16 @@
 var bodyParser            = require("body-parser"),
     mongoose              = require("mongoose"),
+    passport              = require("passport"),
+    bcrypt                = require("bcrypt-nodejs"),
     express               = require("express"),
+    session               = require("express-session"),
     app                   = express();
+    
+// MONGO CONFIG
+var configDB = require("./config/database");
+mongoose.connect(configDB.url);
 
-// MONGOOSE CONFIG
-mongoose.connect("mongodb://localhost/charity_programmers");
-
-// PROGRAMMER MODEL
-var Programmer = mongoose.model("Programmer", new mongoose.Schema({
-    name: String,
-    description: {type: String, default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat facilisis sollicitudin. Quisque a sodales tortor. Donec libero augue, consequat vel bibendum quis, lacinia in mi. Donec vel sagittis sem. In consequat sem molestie metus dapibus, nec maximus urna cursus. Ut volutpat ornare sollicitudin. In facilisis molestie lacus ut ultrices. Praesent tincidunt neque in felis volutpat eleifend. Donec maximus tortor ut arcu imperdiet cursus. Phasellus lacinia, dui ut laoreet vestibulum, nunc nibh imperdiet lorem, sit amet mollis nulla nibh sed tortor."},
-    rating: {type: Number, default: 3}
-}));
-
-// USER MODEL
-var userSchema = new mongoose.Schema({
-    username: String,
-    password: String
-});
-
-var User = mongoose.model("User", userSchema);
-
-// JOB MODEL
-var Job = mongoose.model("Job", new mongoose.Schema({
-    title: String,
-    description: String,
-    charityName: String,
-    applicants: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Programmer"
-        }
-    ], 
-    status: {type: Number, default: 1}
-}));
+require("./config/passport")(passport); // pass passport for config function
 
 // APP CONFIG
 app.set("view engine", "ejs");
@@ -41,20 +18,39 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}));
 
 // PASSPORT CONFIG
-app.use(require("express-session")({
-    secret: "These secrets are very sketchy ... secret ....",
+app.use(session({ 
+    secret: 'ilovescotchscotchyscotchscotch',
     resave: false,
     saveUninitialized: false
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", function(req, res){
     res.render("home", {cp: "n"}); 
 });
 
 // ==============
-// CHARITY ROUTES
+// SIGN UP ROUTES
 // ==============
 
+app.post("/signup", passport.authenticate('local-signup', {
+    successRedirect: "/",
+    failureRedirect: "/register",
+}));
+
+app.get("/register", function(req, res) {
+   res.render("authentication/register"); 
+});
+
+app.get("/login", function(req, res){
+    res.render("authentication/login");
+});
+
+// ==============
+// CHARITY ROUTES
+// ==============
+/*
 app.get("/charity/job", function(req, res){
     Job.findOne({}).populate("applicants").exec(function(err, foundJob){
         if (err) {
@@ -97,17 +93,6 @@ app.get("/programmer/job/all", function(req, res){
     });
 });
 
-/*Programmer.create({
-    name: "Julio",
-    rating: 5
-}, function(err, newProgrammer){
-    if (err) {
-        console.log(err);
-    } else { 
-       console.log(newProgrammer); 
-   }
-});*/
-
 app.get("/programmer/job/:id/", function(req, res) {
     Programmer.findOne({name: "Julio"}, function(err, programmer){
         if (err){
@@ -124,7 +109,7 @@ app.get("/programmer/job/:id/", function(req, res) {
             });
         }
     });
-});
+}); */
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("CharityProgrammers running...");

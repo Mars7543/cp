@@ -23,10 +23,19 @@
     width: 50%;
 }
 
+.formContainer.small {
+    width: 50%;
+}
+
 #field {
     margin-top: 10px;
 }
 
 #charity-jobs {
     width: 75%;
+}
+
+.ui #dropdown {
+    width: 40%;
+    margin: 20px 30% 10px auto;
 }

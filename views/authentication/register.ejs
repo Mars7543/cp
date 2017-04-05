@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<div class="formContainer small">
+  <h1 class="ui centered header">Register!</h1>
+
+    <form method="post" action="/signup" class="ui centered form">
+      <div class="field" id="dropdown">
+        <div class="ui selection dropdown">
+          <input type="hidden" name="organization">
+            <i class="dropdown icon"></i>
+            <div class="default text">Organization</div>
+              <div class="menu">
+                <div class="item" data-value="charity">Charity</div>
+                <div class="item" data-value="programmer">Programmer</div>
+              </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+      <button class="ui green button">Submit</button>
+    </form>
+</div>
+
+<script>
+
+  $('.ui.dropdown').dropdown();
+  
+</script>
+
+<% include ../partials/footer %>

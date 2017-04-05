@@ -16,38 +16,13 @@
                     Charity Programmers<i class="code icon">
                 </i>
             </a>
-            <div class="right menu">
-                <!-- Displays different navbar depending on whether or not 
-                    they are in the /charity or /programmer page -->
-                <% if (cp === "n") { %>
-                    <a href="/charity/job" class="item">Charity</a>
-                    <a href="/programmer/job" class="item">Programmer</a>
-                <% } else if (cp === "c") { %>
-                    <% if (r === "index") { %>
-                        <a href="/charity/job" class="active item">My Job(s)</a>
-                        <a href="/charity/job/new" class="item">Create Job</a>
-                    <% } else if (r == "new") { %> 
-                        <a href="/charity/job" class="item">My Job(s)</a>
-                        <a href="/charity/job/new" class="active item">Create Job</a>
-                    <% } %>
-                <% } else if (cp === "p") { %>
-                    <% if (r === "index") { %>
-                        <a href="/programmer/job" class="active item">My Jobs</a>
-                        <a href="/programmer/job/all" class="item">Available Jobs</a>
-                    <% } else if (r == "view") { %> 
-                        <a href="/programmer/job" class="item">My Jobs</a>
-                        <a href="/programmer/job/all" class="active item">Available Jobs</a>
-                    <% } %>
-                <% } %>
-            </div>
 
-            <!-- Register | Login | Logout - Menu
+            <!-- Register | Login | Logout - Menu -->
                 <div class="right menu">
-                    <a class="item">Register</a>
-                    <a class="item">Login</a>
-                    <a class="item">Logout</a>
+                    <a class="item" href="/register">Register</a>
+                    <a class="item" href="/login">Login</a>
+                    <a class="item" href="/logout">Logout</a>
                 </div> 
-            -->
         </div>
         
         <div class="container">
