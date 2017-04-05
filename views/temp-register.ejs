@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+<div class="signUp"><h1 style= "font-size:30px">Sign Up</h1></div>
+
+<% if (org === "charity"){
+        var name = "Charity Name";
+        var placeholder = "(i.e. My Charity Name)";
+    } else{
+        var name = "Name"; 
+        var placeholder = "(i.e. John Appleseed)";
+    }
+%>
+
+<div class="inputs">
+    <form action="/register/<%= org %>" class = "ui form" method="post">
+        <div class="field">
+            <label><%= name %></label>
+            <input type="text" name="name" placeholder="<%= placeholder %>" required>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="E-Mail" required>
+        </div>
+        <div class="field">
+            <label>Phone #</label>
+            <input type="text" name="phone" placeholder="Phone #" required>
+        </div>
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password" minlength='5' maxlength="10" required>
+        </div>
+        <button class="ui button center" id="center" type="submit">Submit</button>
+    </form>
+</div>
+<script> $('.ui.dropdown').dropdown(); </script>
+
+<% include partials/footer %>

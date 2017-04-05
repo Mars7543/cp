@@ -1,21 +1,30 @@
 <% include ../partials/header %>
 
-<div class="ui stacked segments half" id="myJob">
-    <div class="ui segment">
-        My Job(s)
-    </div>
-    <div class="ui segment">
-        Item 2
-    </div>
-</div>
+<div class="ui centered huge header" id="header">My Jobs</div>
 
-<div class="ui stacked segments half" id="myInfo">
-    <div class="ui segment">
-        About Me
-    </div>
-    <div class="ui segment">
-        Item 2
-    </div>
-</div>
+<table class="ui celled padded table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Description</th>
+            <th>Accept</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% applicants.forEach(function(applicant){ %>
+            <tr>
+                <td><%= applicant.name %></td>
+                <td><div class="ui star rating" data-rating="<%= applicant.rating %>" data-max-rating="5"></div></td>
+                <td><%= applicant.description %></td>
+                <td><a class="ui green button">Accept</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<script>
+    $('.ui.rating').rating('disable');
+</script>
 
 <% include ../partials/footer %>

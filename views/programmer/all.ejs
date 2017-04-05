@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 
-<h1>View Available Jobs</h1>
+<div class="ui centered huge header" id="header">Available Jobs</div>
 
-<table class="ui celled table">
+<table class="ui celled padded table">
     <thead>
         <tr>
-            <th>Charity</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>More Info</th>
+            <th class="three wide">Charity</th>
+            <th class="three wide">Title</th>
+            <th class="ten wide">Apply</th>
+            <th>View More</th>
         </tr>
     </thead>
     
@@ -18,12 +18,12 @@
         <tr>
             <td><%= job.charityName %></td>
             <td><%= job.title %></td>
-            <% if (job.description.length <= 175) { %>
+            <% if (job.description.length <= 475) { %>
                 <td><%= job.description %></td>
             <% } else { %>
-                <td><%= job.description.substring(0, 175); %>...</td>
+                <td><%= job.description.substring(0, 475); %>...</td>
             <% } %>
-            <td><a href="/programmer/job/<%= job._id %>/"><button>View More!</button></a></td>
+            <td><a class="ui green button" href="/programmer/job/<%= job._id %>/">Apply!</a></td>
         </tr>
     <% }); %>
     

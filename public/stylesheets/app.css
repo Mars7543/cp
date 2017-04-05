@@ -7,27 +7,26 @@
     margin-left: 5px;
 }
 
-.half {
-    position: relative;
-    width: 50%;
-    top: 0;
-    left: 0;
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header {
+    margin-top: 8%;
+    margin-bottom: 30px;
 }
 
 .formContainer {
-    margin: 80px auto 0 auto;
-    width: 30%;
+    margin: 90px auto 0 auto;
+    width: 50%;
 }
 
 #field {
     margin-top: 10px;
 }
 
-#myJob {
-    float: left;
-}
-
-#myInfo {
-    margin-top: 0;
-    float: right;
+#charity-jobs {
+    width: 75%;
 }

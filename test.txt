@@ -1,0 +1,10 @@
+<% applicants.forEach(function(applicant){ %>
+    <tr>
+        <td><%= applicant.name %></td>
+        <td><div class="ui star rating" data-rating="<%= applicant.rating %>" data-max-rating="5"></div></td>
+        <td><%= applicant.description %></td>
+        <td><a class="ui button green" href="/charity/job/<%= job._id %>/applicant/<%= applicant._id %>">Accept</a></td>
+    </tr>
+<% }); %>
+
+href="/charity/job/<%= job._id %>/applicant/<%= applicant._id %>"
