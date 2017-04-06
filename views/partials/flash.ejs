@@ -1,0 +1,47 @@
+<% if ((error && error.length > 0) || (success && success.length > 0)) { %> 
+    <div class="container flash">
+        <% if (internalServerError && internalServerError.length > 0) { %>
+            <div class="ui error message">
+                <i class="close icon"></i>
+                <div class="header"> Internal Server Error</div>
+                <p><%= internalServerError %></p>
+            </div>
+        <% } else if (signupError && signupError.length > 0) { %>
+            <div class="ui error message">
+                <i class="close icon"></i>
+                <div class="header"> Sign Up Error</div>
+                <p><%= signupError %></p>
+            </div>
+        <% } else if (loginError && loginError.length > 0) { %>
+            <div class="ui error message">
+                <i class="close icon"></i>
+                <div class="header"> Login Error</div>
+                <p><%= loginError %></p>
+            </div>
+        <% } else if (permissionsError && permissionsError.length > 0) { %>
+            <div class="ui error message">
+                <i class="close icon"></i>
+                <div class="header"> Permissions Error </div>
+                <p><%= permissionsError %></p>
+            </div>
+        <% } else if (signupSuccess && signupSuccess.length > 0) { %>
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">User Registration Successful</div>
+                <p><%= signupSuccess %></p>
+            </div>
+        <% } else if (loginSuccess && loginSuccess.length > 0) { %>
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">Login Successful</div>
+                <p><%= loginSuccess %></p>
+            </div>
+        <% } else if (logoutSuccess && logoutSuccess.length > 0) { %>
+            <div class="ui success floating message">
+                <i class="close icon"></i>
+                <div class="header">Logout Successful</div>
+                <p><%= logoutSuccess %></p>
+            </div>
+        <% } %>
+    <% } %>
+</div>

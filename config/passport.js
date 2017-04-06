@@ -1,7 +1,9 @@
 var LocalStrategy = require("passport-local").Strategy;
 
-// load up user model
-var User = require("../models/user");
+// load up models
+var User        = require("../models/user");
+var Programmer  = require("../models/programmer");
+var Charity     = require("../models/charity");
 
 module.exports = function(passport){
     // ======================
@@ -25,48 +27,72 @@ module.exports = function(passport){
     // ============
     
     passport.use('local-signup', new LocalStrategy({
-        usernameField: 'email',
+        usernameField: 'email',    // specify username and password fields
         passwordField: 'password',
-        passReqToCallback: true
+        passReqToCallback: true    // pass entire request to callback
     }, 
     function(req, email, password, done){
         process.nextTick(function(){
-            User.findOne({'local-email' : email}, function(err, user){
+            User.findOne({'local.email' : email}, function(err, user){
                 if (err){
+                    req.flash("error", "true");
+                    req.flash('internalServerError', 'Something went wrong :( Please try again later');
                     return done(err);
                 } else {
                     if (user) {
-                        console.log("user exists");
+                        req.flash("error", "true");
+                        req.flash('signupError', 'That email is already taken.');
                         return done(null, false);
                     } else {
-                        // if there is user with that email
-                        // create user
+                        // if there isnt' a user with that email create user
+                        
                         var newUser = new User();
                         
                         // set user's local credentials
                         newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password);
                         
+                        // set user's first/last name
                         newUser.firstName = req.body.firstName;
                         newUser.lastName  = req.body.lastName;
                         
+                        // set their affiliation (charity/programmer)
                         newUser.organization = req.body.organization;
                         
-                        if (newUser.organization === "charity"){
-                            newUser.charity.name = req.body.charityName;
-                            newUser.programmer = undefined;
-                        } else {
-                            newUser.charity = undefined;
+                        // if the user is a programmer, make programmer object and link the id to the user
+                        if (newUser.organization === "programmer") {
+                            var newProgrammer = new Programmer();
+                            
+                            newProgrammer.save();
+                            
+                            newUser.programmer = newProgrammer._id;
+                            
+                        // if the user is a charity, make a charity object, give it a name, then link the id to the user
+                        } else if (newUser.organization === "charity") {
+                            var newCharity = new Charity();
+                            newCharity.name = req.body.charityName;
+                            
+                            newCharity.save(function(err){
+                                if (err) {
+                                    req.flash("error", "true");
+                                    req.flash('internalServerError', 'Something went wrong :( Please try again later');
+                                    throw err; 
+                                }
+                            });
+                            
+                            newUser.charity = newCharity._id;
                         }
                         
-                        console.log("user created");
                         // save user
                         newUser.save(function(err) {
                             if (err) {
-                                console.log("error");
+                                req.flash("error", "true");
+                                req.flash('internalServerError', 'Something went wrong :( Please try again later');
                                 throw err;
                             }
-                            console.log("USER: " + newUser);
+                            
+                            req.flash("success", "true");
+                            req.flash("signupSuccess", 'Welcome to CharityProgrammers, ' + newUser.firstName[0].toUpperCase() + newUser.firstName.slice(1) + "!");
                             return done(null, newUser);
                         });
                     }
@@ -76,7 +102,7 @@ module.exports = function(passport){
     }));
     
     // ============
-    // LOCAL SIGNIN
+    // LOCAL LOGIN
     // ============
     
     passport.use('local-login', new LocalStrategy({
@@ -85,21 +111,24 @@ module.exports = function(passport){
         passReqToCallback: true
     }, 
     function(req, email, password, done){
+        // find user with given email
         User.findOne({'local.email' : email}, function(err, user){
-            console.log("Checkpoint 1!");
             if (err){
-                console.log("Error!");
+                req.flash("error", "true");
+                req.flash('internalServerError', 'Something went wrong :( Please try again later');
                 return done(err);
             }
-            if(!user){
-                console.log("No user found!");
+            
+            // if no user exists or password is incorrect send error
+            if (!user || !user.validPassword(password)){
+                req.flash("error", "true");
+                req.flash('loginError', 'Invalid email or password');
                 return done(null, false);
             }
-            if (!user.validPassword(password)){
-                console.log("Invalid Password!");
-                return done(null, false);
-            }
-            console.log("Checkpoint 2!");
+            
+            // if no errors occurred then send back user
+            req.flash("success", "true");
+            req.flash('loginSuccess', 'Welcome back ' + user.firstName[0] + user.firstName.slice(1) + "!");
             return done(null, user);
         });
     }));

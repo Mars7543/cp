@@ -16,13 +16,46 @@
                     Charity Programmers<i class="code icon">
                 </i>
             </a>
-
+            
             <!-- Register | Login | Logout - Menu -->
+            <% if (!currentUser) { %>
                 <div class="right menu">
                     <a class="item" href="/register">Register</a>
                     <a class="item" href="/login">Login</a>
-                    <a class="item" href="/logout">Logout</a>
                 </div> 
+            <% } else if (currentUser) { %>
+                <div class="right menu">
+                    <% if (cp === "n") { %>
+                        <% if (currentUser.organization === "programmer") { %>
+                            <a href="/programmer/job" class="item">My View</a>
+                        <% } else { %>
+                            <a href="/charity/job" class="item">My View</a>
+                        <% } %>
+                    <% } else if (cp === "c") { %>
+                        <% if (r === "index") { %>
+                            <a href="/charity/job" class="active item">My Job(s)</a>
+                            <a href="/charity/job/new" class="item">Create Job</a>
+                        <% } else if (r == "new") { %> 
+                            <a href="/charity/job" class="item">My Job(s)</a>
+                            <a href="/charity/job/new" class="active item">Create Job</a>
+                        <% } %>
+                    <% } else if (cp === "p") { %>
+                        <% if (r === "index") { %>
+                            <a href="/programmer/job" class="active item">My Jobs</a>
+                            <a href="/programmer/job/all" class="item">Available Jobs</a>
+                        <% } else if (r == "view") { %> 
+                            <a href="/programmer/job" class="item">My Jobs</a>
+                            <a href="/programmer/job/all" class="active item">Available Jobs</a>
+                        <% } %>
+                        <% } %>
+                        <div class="item">Logged in as <strong style="margin-left: 5px;"><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) + " " + currentUser.lastName[0].toUpperCase() + currentUser.lastName.slice(1) %></strong></div>
+                        <a class="item" href="/logout">Logout</a>
+                    </div>
+                </div>
+            <% } %>
         </div>
         
+        <% include flash %>
+        
         <div class="container">
+            

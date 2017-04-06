@@ -13,6 +13,16 @@
     margin-right: auto;
 }
 
+.flash {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flash .ui.message{
+    text-align: center;
+}
+
 #header {
     margin-top: 8%;
     margin-bottom: 30px;
