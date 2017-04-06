@@ -27,6 +27,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", function(req, res){
+    if (req.user) {
+        console.log(req.user);
+    } else {
+        console.log("No user logged in");
+    }
     res.render("home", {cp: "n"}); 
 });
 
@@ -46,6 +51,11 @@ app.get("/register", function(req, res) {
 app.get("/login", function(req, res){
     res.render("authentication/login");
 });
+
+app.post("/login", passport.authenticate('local-login', {
+    successRedirect: "/",
+    failureRedirect: "/login"
+}));
 
 // ==============
 // CHARITY ROUTES
