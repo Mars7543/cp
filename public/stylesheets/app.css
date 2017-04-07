@@ -28,8 +28,17 @@
     margin-bottom: 30px;
 }
 
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+#loggedInAs {
+    margin-left: 5px;
+}
+
 .formContainer {
-    margin: 90px auto 0 auto;
+    margin: 8% auto 0 auto;
     width: 50%;
 }
 

@@ -1,0 +1,30 @@
+<script>
+    $(".container").css("margin-top", $("#main-menu").height() + 20);
+
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+    
+    if ($(".flash").length != 0) {
+       $(".container").css("margin-top", "5.5%");
+       $(".formContainer").css("margin-top", "-4%");
+    }
+    
+    $(".close.icon").click(function(){
+        $(".container").css("margin-top", $("#main-menu").height() + 20);
+        $(".formContainer").css("margin-top", "8%");
+    });
+    
+    <% if (currentUser) { %>
+            var width = $("#logout").css("width");
+    
+            $("#logout").hover(function(){
+                $(this).css("width", width);
+                $(this).html("<strong class='center'>Logout</strong>");
+            }, function() {
+                $(this).html("Logged in as <strong id='loggedInAs'><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) %></strong>");
+            });
+       
+    <% } %>
+
+</script>

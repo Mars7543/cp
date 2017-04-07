@@ -48,8 +48,7 @@
                             <a href="/programmer/job/all" class="active item">Available Jobs</a>
                         <% } %>
                         <% } %>
-                        <div class="item">Logged in as <strong style="margin-left: 5px;"><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) + " " + currentUser.lastName[0].toUpperCase() + currentUser.lastName.slice(1) %></strong></div>
-                        <a class="item" href="/logout">Logout</a>
+                        <a id="logout" class="item" href="/logout">Logged in as <strong id="loggedInAs"><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) %></strong></a>
                     </div>
                 </div>
             <% } %>
