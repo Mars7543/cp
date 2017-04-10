@@ -76,7 +76,8 @@ module.exports = function(passport){
                                 if (err) {
                                     req.flash("error", "true");
                                     req.flash('internalServerError', 'Something went wrong :( Please try again later');
-                                    throw err; 
+                                    
+                                    return done(err); 
                                 }
                             });
                             
@@ -88,7 +89,8 @@ module.exports = function(passport){
                             if (err) {
                                 req.flash("error", "true");
                                 req.flash('internalServerError', 'Something went wrong :( Please try again later');
-                                throw err;
+                                
+                                return done(err);
                             }
                             
                             req.flash("success", "true");

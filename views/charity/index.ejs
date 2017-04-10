@@ -1,30 +1,35 @@
 <% include ../partials/header %>
 
-<div class="ui centered huge header" id="header">My Jobs</div>
+<% if (!job) { %>
 
-<table class="ui celled padded table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Description</th>
-            <th>Accept</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% applicants.forEach(function(applicant){ %>
+    <!-- to be styled in the future -->
+    <div class="ui centered huge header" id="header">You Have No Jobs</div>
+    
+<% } else { %>
+
+    <div class="ui centered huge header" id="header">My Jobs</div>
+
+    <table class="ui celled padded table">
+        <thead>
             <tr>
-                <td><%= applicant.name %></td>
-                <td><div class="ui star rating" data-rating="<%= applicant.rating %>" data-max-rating="5"></div></td>
-                <td><%= applicant.description %></td>
-                <td><a class="ui green button">Accept</a></td>
+                <th class="three wide">Name</th>
+                <th class="three wide">Rating</th>
+                <th class="eight wide">Description</th>
+                <th class="two wide">Accept</th>
             </tr>
-        <% }); %>
-    </tbody>
-</table>
-
-<script>
-    $('.ui.rating').rating('disable');
-</script>
+        </thead>
+        <tbody>
+            <% job.applicants.forEach(function(applicant){ %>
+                <tr>
+                    <td><%= applicant.firstName[0].toUpperCase() + applicant.firstName.slice(1) + " " + applicant.lastName[0].toUpperCase() + applicant.lastName.slice(1) %></td>
+                    <td><div class="ui star rating" data-rating="<%= applicant.programmer.rating %>" data-max-rating="5"></div></td>
+                    <td><%= applicant.programmer.description %></td>
+                    <td><a class="ui green button">Accept</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+<% } %>
 
 <% include ../partials/footer %>

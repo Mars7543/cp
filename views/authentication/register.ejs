@@ -5,19 +5,19 @@
 
     <form method="post" action="/signup" class="ui centered form">
       <div class="field" id="dropdown">
-        <div class="ui selection dropdown">
+        <div class="ui selection dropdown" id="orgSelect">
           <input type="hidden" name="organization">
             <i class="dropdown icon"></i>
             <div class="default text">Organization</div>
               <div class="menu">
-                <div class="item" data-value="charity">Charity</div>
-                <div class="item" data-value="programmer">Programmer</div>
+                <div class="item" value="charity" data-value="charity">Charity</div>
+                <div class="item" value="programmer" data-value="programmer">Programmer</div>
               </div>
         </div>
       </div>
       <div class="field">
-        <label>Charity Name (If Applies)</label>
-        <input type="text" name="charityName" placeholder="Charity"/>
+        <label>Charity Name</label>
+        <input id="charityName" type="text" name="charityName" placeholder="Charity"/>
       </div>
       <div class="field">
         <label>First Name</label>
@@ -38,11 +38,5 @@
       <button class="ui green button">Submit</button>
     </form>
 </div>
-
-<script>
-
-  $('.ui.dropdown').dropdown();
-  
-</script>
 
 <% include ../partials/footer %>

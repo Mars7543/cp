@@ -6,9 +6,8 @@
     <thead>
         <tr>
             <th class="three wide">Charity</th>
-            <th class="three wide">Title</th>
-            <th class="ten wide">Apply</th>
-            <th>View More</th>
+            <th class="eight wide">Description</th>
+            <th class="two wide">View More</th>
         </tr>
     </thead>
     
@@ -17,7 +16,6 @@
     <% jobs.forEach(function(job) { %>
         <tr>
             <td><%= job.charityName %></td>
-            <td><%= job.title %></td>
             <% if (job.description.length <= 475) { %>
                 <td><%= job.description %></td>
             <% } else { %>

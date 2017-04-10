@@ -26,5 +26,19 @@
             });
        
     <% } %>
+    
+    $('.ui.dropdown').dropdown();
+    
+    $('#charityName').prop('readonly', true);
+    
+    jQuery("#orgSelect").change(function () {
+        if ($('.ui.dropdown').dropdown("get value") === 'programmer') {
+            $('#charityName').prop('readonly', true);
+            $("#charityName").val("");
+         } else if ($('.ui.dropdown').dropdown("get value") === "charity")
+            $('#charityName').prop('readonly', false);
+    });
+    
+    $('.ui.rating').rating('disable');
 
 </script>

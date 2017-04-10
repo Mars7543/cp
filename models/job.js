@@ -1,8 +1,7 @@
 var mongoose = require("mongoose");
 
 // JOB MODEL
-var Job = mongoose.model("Job", new mongoose.Schema({
-    title         : String,
+module.exports = mongoose.model("Job", new mongoose.Schema({
     description   : String,
     charityName   : String,
     applicants    : [
