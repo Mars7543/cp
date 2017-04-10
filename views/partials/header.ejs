@@ -23,9 +23,9 @@
                     <a class="item" href="/register">Register</a>
                     <a class="item" href="/login">Login</a>
                 </div> 
-            <% } else if (currentUser) { %>
-                <div class="right menu">
-                    <% if (cp === "n") { %>
+            <% } else if (currentUser) { %> 
+                <div class="right menu"> <!-- highlight tab depending on what page they are on -->
+                    <% if (typeof cp === "undefined") { %>
                         <% if (currentUser.organization === "programmer") { %>
                             <a href="/programmer/job" class="item">My View</a>
                         <% } else { %>
@@ -47,14 +47,13 @@
                             <a href="/programmer/job" class="item">My Jobs</a>
                             <a href="/programmer/job/all" class="active item">Available Jobs</a>
                         <% } %>
-                        <% } %>
-                        <a id="logout" class="item" href="/logout">Logged in as <strong id="loggedInAs"><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) %></strong></a>
-                    </div>
+                    <% } %>
+                    <a id="logout" class="item" href="/logout">Logged in as <strong id="loggedInAs"><%= currentUser.firstName[0].toUpperCase() + currentUser.firstName.slice(1) %></strong></a>
                 </div>
             <% } %>
         </div>
         
-        <% include flash %>
+        <% include flash %>  <!-- include flash success/error messages -->
         
         <div class="container">
             

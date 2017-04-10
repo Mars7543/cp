@@ -56,6 +56,7 @@ app.use(indexRoutes);
 app.use(charityRoutes);
 app.use(programmerRoutes);
 
+// start server
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("CharityProgrammers running...");
 });

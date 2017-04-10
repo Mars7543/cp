@@ -8,11 +8,12 @@ var middleware  = require("../middleware");
 // PROGRAMMER ROUTES
 // =================
 
-router.get("/programmer/job", middleware.isLoggedIn, function(req, res){
+router.get("/programmer/job", middleware.isProgrammer, function(req, res){ // view "my jobs" page
     res.render("programmer/index", {cp: "p", r: "index"}); 
 });
 
-router.get("/programmer/job/all", middleware.isLoggedIn, function(req, res){
+// find all available jobs and send the data to the "view all jobs" page
+router.get("/programmer/job/all", middleware.isProgrammer, function(req, res){ 
     Job.find({}, function(err, allJobs){
         if (err) {
             console.log(err);
@@ -22,12 +23,12 @@ router.get("/programmer/job/all", middleware.isLoggedIn, function(req, res){
     });
 });
 
-router.get("/programmer/job/:id/", middleware.isLoggedIn, function(req, res) {
-    Job.findById(req.params.id, function(err, job){
+router.get("/programmer/job/:id/", middleware.isProgrammer, function(req, res) { // apply route
+    Job.findById(req.params.id, function(err, job){ // find job with the id sent in the url
         if (err) {
             console.log(err);
         } else { 
-            job.applicants.push(req.user._id); 
+            job.applicants.push(req.user._id);  // push the programmer's id into the list of applicant IDs and save the job
             job.save();
             res.redirect("/programmer/job");
         }

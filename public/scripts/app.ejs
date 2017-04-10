@@ -1,19 +1,47 @@
 <script>
-    $(".container").css("margin-top", $("#main-menu").height() + 20);
-
+    // ===============
+    // SEMANTIC CONFIG
+    // ===============
+    
     $('.message .close').on('click', function() {
         $(this).closest('.message').transition('fade');
     });
+    
+    $('.ui.dropdown').dropdown();
+    
+    $('.ui.rating').rating('disable');
+    
+    // change charity name input box to be readonly if they are registering as a programmer
+    
+    $('#charityName').prop('readonly', true);
+    
+    jQuery("#orgSelect").change(function () {
+        if ($('.ui.dropdown').dropdown("get value") === 'programmer') {
+            $('#charityName').prop('readonly', true);
+            $("#charityName").val("");
+         } else if ($('.ui.dropdown').dropdown("get value") === "charity")
+            $('#charityName').prop('readonly', false);
+    });
+    
+    // push the main content beneath the fixed navbar
+    
+    $(".container").css("margin-top", $("#main-menu").height() + 20);
+
+    // change margins if a flash error / success message is being displayed
     
     if ($(".flash").length != 0) {
        $(".container").css("margin-top", "5.5%");
        $(".formContainer").css("margin-top", "-4%");
     }
     
+    // change margins back after flash message is closed
+    
     $(".close.icon").click(function(){
         $(".container").css("margin-top", $("#main-menu").height() + 20);
         $(".formContainer").css("margin-top", "8%");
     });
+    
+    // hover logout option on user tab - navbar
     
     <% if (currentUser) { %>
             var width = $("#logout").css("width");
@@ -26,19 +54,5 @@
             });
        
     <% } %>
-    
-    $('.ui.dropdown').dropdown();
-    
-    $('#charityName').prop('readonly', true);
-    
-    jQuery("#orgSelect").change(function () {
-        if ($('.ui.dropdown').dropdown("get value") === 'programmer') {
-            $('#charityName').prop('readonly', true);
-            $("#charityName").val("");
-         } else if ($('.ui.dropdown').dropdown("get value") === "charity")
-            $('#charityName').prop('readonly', false);
-    });
-    
-    $('.ui.rating').rating('disable');
 
 </script>
