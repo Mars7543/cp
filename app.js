@@ -20,7 +20,7 @@ require("./config/passport")(passport); // pass passport for config function
 
 // APP CONFIG
 app.set("view engine", "ejs");
-app.use(express.static((__dirname + "/public")));
+app.use(express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: true}));
 
 // PASSPORT CONFIG

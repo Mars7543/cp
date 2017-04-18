@@ -71,6 +71,7 @@ module.exports = function(passport){
                         } else if (newUser.organization === "charity") {
                             var newCharity = new Charity();
                             newCharity.name = req.body.charityName;
+                            newCharity.description = req.body.charityDescription;
                             
                             newCharity.save(function(err){
                                 if (err) {

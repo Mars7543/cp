@@ -13,8 +13,8 @@
         <thead>
             <tr>
                 <th class="three wide">Name</th>
-                <th class="three wide">Rating</th>
-                <th class="eight wide">Description</th>
+                <!-- <th class="three wide">Rating</th> -->
+                <th class="eleven wide">Description</th>
                 <th class="two wide">Accept</th>
             </tr>
         </thead>
@@ -22,8 +22,13 @@
             <% job.applicants.forEach(function(applicant){ %>
                 <tr>
                     <td><%= applicant.firstName[0].toUpperCase() + applicant.firstName.slice(1) + " " + applicant.lastName[0].toUpperCase() + applicant.lastName.slice(1) %></td>
-                    <td><div class="ui star rating" data-rating="<%= applicant.programmer.rating %>" data-max-rating="5"></div></td>
-                    <td><%= applicant.programmer.description %></td>
+                    
+                    <% applicant.programmer.appliedJobs.forEach(function(appliedJob){
+                        if (appliedJob.id.equals(job._id)) { %>
+                            <td><%= appliedJob.description %></td>
+                        <% }
+                    }); %>
+                    
                     <td><a class="ui green button">Accept</a></td>
                 </tr>
             <% }); %>

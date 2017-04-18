@@ -20,8 +20,9 @@ router.get("/charity/job", middleware.isCharity, function(req, res){ // view "my
                 if (err) {
                     req.flash("error", "true");
                     req.flash("internalServerError", 'Something went wrong :( Please try again later');
-                    
                     res.redirect("/");
+                    
+                    req.flash("formErrorMessage", "You have error(s) in your form");
                 } else {
                     res.render("charity/index", {cp: "c", r: "index", job: job});
                 }

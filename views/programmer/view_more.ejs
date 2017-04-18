@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="smallContainer">
+
+    <h1 class="ui centered header" id="view-header">Charity Name</h1>
+    
+    <h3 class="ui header">What we do: </h3>
+    <p class="text"><%= charity.description %></p>
+    
+    <h3>What we need: </h3>
+    <p class="text"><%= job.description %></p>
+    
+    <h2 class="ui centered header">Why I should do this job!</h2>
+    
+    <form action="/programmer/job/<%= job._id %>/" method="post" class="ui centered form">
+      <div class="field">
+        <textarea style="font-size: 1.05em" name="pDesc"></textarea>
+      </div>
+      <button class="ui green button" type="submit">Apply</button>
+    </form>
+    
+</div>
+    
+<% include ../partials/footer %>

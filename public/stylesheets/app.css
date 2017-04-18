@@ -28,6 +28,12 @@
     margin-bottom: 30px;
 }
 
+#view-header {
+    margin-top: 9%;
+    margin-bottom: 1%;
+    font-size: 2.7em;
+}
+
 .center {
     width: 100%;
     text-align: center;
@@ -45,6 +51,23 @@
 .formContainer.small {
     width: 50%;
 }
+
+.smallContainer {
+    margin: 0 auto;
+    width: 75%;
+}
+
+.main-header {
+    font-size: 2em;
+}
+
+.text {
+    font-size: 1.05em;
+}
+
+.smallField {
+    height: 85%;
+} 
 
 #field {
     margin-top: 10px;

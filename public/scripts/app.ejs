@@ -13,14 +13,14 @@
     
     // change charity name input box to be readonly if they are registering as a programmer
     
-    $('#charityName').prop('readonly', true);
+    $('.charity').css("display", "none");
     
     jQuery("#orgSelect").change(function () {
         if ($('.ui.dropdown').dropdown("get value") === 'programmer') {
-            $('#charityName').prop('readonly', true);
+            $('.charity').css("display", "none");
             $("#charityName").val("");
          } else if ($('.ui.dropdown').dropdown("get value") === "charity")
-            $('#charityName').prop('readonly', false);
+            $('.charity').css("display", "block");
     });
     
     // push the main content beneath the fixed navbar
