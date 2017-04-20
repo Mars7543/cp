@@ -72,6 +72,8 @@ router.post("/programmer/job/:id/", middleware.isProgrammer, function(req, res) 
                             
                             programmer.save();
                             
+                            req.flash("success", "true");
+                            req.flash("applySuccess", "You have successfully applied for " + job.charityName + "!");
                             res.redirect("/programmer/job");
                         }
                     }); 

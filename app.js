@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // PASSPORT CONFIG
 app.use(session({ 
-    secret: 'ilovescotchscotchyscotchscotch',
+    secret: 'Leo is the best dog to ever roam this earth',
     resave: false,
     saveUninitialized: false
 }));
@@ -48,6 +48,7 @@ app.use(function(req, res, next) {
     res.locals.signupSuccess           = req.flash("signupSuccess");
     res.locals.loginSuccess            = req.flash("loginSuccess");
     res.locals.logoutSuccess           = req.flash("logoutSuccess");
+    res.locals.applySuccess            = req.flash("applySuccess");
     next();
 }); 
 

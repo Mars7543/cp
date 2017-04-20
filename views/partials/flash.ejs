@@ -42,6 +42,12 @@
                 <div class="header">Logout Successful</div>
                 <p><%= logoutSuccess %></p>
             </div>
+        <% } else if (applySuccess && applySuccess.length > 0) { %>
+            <div class="ui success floating message">
+                <i class="close icon"></i>
+                <div class="header">Job Application Successful</div>
+                <p><%= applySucce %></p>
+            </div>
         <% } %>
     <% } %>
 </div>
